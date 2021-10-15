@@ -8,5 +8,8 @@ export default {
 
     },
     actions: {
+        // loginUser: async ({commit} => {
+        //     const res = await axios.post('', )
+        // })
     }
 }

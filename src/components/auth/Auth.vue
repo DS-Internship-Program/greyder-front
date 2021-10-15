@@ -2,7 +2,7 @@
   <div> 
     <input type="text" v-model="email" placeholder="email">
     <input type="password" v-model="password" placeholder="password" />
-     <button>Войти</button>
+     <button @click="submit">Войти</button>
   </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
             email: '',
             password: ''
         }
+    },
+    methods: {
+      submit(){
+        console.log(this.email, this.password)
+      }
     }
 }
 </script>
