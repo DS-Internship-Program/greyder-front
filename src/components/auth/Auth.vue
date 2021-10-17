@@ -1,8 +1,10 @@
 <template>
   <div> 
+    <form action="">
     <input type="text" v-model="email" placeholder="email">
     <input type="password" v-model="password" placeholder="password" />
      <button @click="submit">Войти</button>
+    </form>
   </div>
 </template>
 
