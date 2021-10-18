@@ -36,7 +36,7 @@ const actions = {
         })
     })
   },
-  login({commit}, credentials) => {
+  login({commit}, credentials) {
     return new Promise(() => {
         authApi.login(credentials)
         .then(res => {
@@ -44,7 +44,7 @@ const actions = {
             setItem('token', res.data.token)
         })
         .catch((result) => {
-            commit("loginFailed", result.response.data.message)  
+            commit('loginFailed', result.response.data.message)  
         })
     })
   }

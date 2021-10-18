@@ -17,20 +17,13 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import('../components/auth/Auth.vue')
   }
 ]
 
 const router = new VueRouter({
   routes
-})
-
-export default router
-]
-
-const router = new VueRouter({
-    routes
 })
 
 export default router;
