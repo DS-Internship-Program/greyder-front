@@ -1,9 +1,9 @@
 <template>
   <div> 
-    <form action="">
+    <form action="" @submit.prevent="onSubmit">
     <input type="text" v-model="email" placeholder="email">
     <input type="password" v-model="password" placeholder="password" />
-     <button @click="submit">Войти</button>
+     <button>Войти</button>
     </form>
   </div>
 </template>
@@ -19,9 +19,12 @@ export default {
         }
     },
     methods: {
-      submit(){
-        console.log(this.email, this.password)
-      }
+        onSubmit(){
+            this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password
+            })
+        }
     }
 }
 </script>
