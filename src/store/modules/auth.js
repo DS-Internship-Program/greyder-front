@@ -30,7 +30,6 @@ export default {
                 })
                 .catch((result) => {
                     console.log(result.response.data.message, 'error')
-
                     commit("loginFailed", result.response.data.message)  
                 })
             })
