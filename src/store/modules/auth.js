@@ -1,38 +1,57 @@
-import authApi from '../../api/auth';
+import authApi from '@/api/auth'
+import { setItem } from '@/helpers/persistenceStorage'
 
+const state = {
+  loggedIn: false,
+  error: null
+}
+
+const mutations = {
+  registerSuccess(state, payload) {
+    state.loggedIn = payload
+  },
+  registerFailed(state, payload) {
+    state.error = payload
+    state.loggedIn = false
+  },
+  loginSuccess(state, payload){
+    state.loggedIn = payload
+  },
+  loginFailed(state, payload){
+    state.error = payload
+    state.loggedIn = false
+  }
+}
+
+const actions = {
+  register({commit}, credentials) {
+    return new Promise(() => {
+      authApi.register(credentials)
+      .then(res => {
+          commit('registerSuccess', true)
+          setItem('token', res.data.token)
+        })
+        .catch(result => {
+          commit('registerFailed', result.response.data.message)
+        })
+    })
+  },
+  login({commit}, credentials) => {
+    return new Promise(() => {
+        authApi.login(credentials)
+        .then(res => {
+            commit('loginSuccess', true)
+            setItem('token', res.data.token)
+        })
+        .catch((result) => {
+            commit("loginFailed", result.response.data.message)  
+        })
+    })
+  }
+}
 
 export default {
-    state: {
-        loggedIn: false,
-        error: null
-    },
-    mutations: {
-        loginSuccess(state, credentials){
-            state.loggedIn = credentials
-            console.log(state.loggedIn)
-        },
-        loginFailed(state, credentials){
-            state.error = credentials
-            state.loggedIn = false
-
-        }
-    },
-    actions: {
-        login: async ({commit}, credentials) => {
-            return new Promise(() => {
-                authApi.login(credentials)
-                .then(res => {
-                    // console.log(credentials, 'credentials')
-                    commit('loginSuccess', true)
-                    console.log(res , 'res')
-                    // setItem('token', res.data.token)
-                    // console.log(res.data.token)
-                })
-                .catch((result) => {
-                    console.log(result.response.data.message, 'error')
-                    commit("loginFailed", result.response.data.message)  
-                })
-            })
-        }
-    }
+  state,
+  mutations,
+  actions
 }
