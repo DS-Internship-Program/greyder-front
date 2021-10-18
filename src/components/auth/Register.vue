@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<form action="" @submit.prevent="onSubmit">
-			<input type="text" placeholder="username" v-model="name">
-			<input type="text" placeholder="email" v-model="nickName">
+			<input type="text" placeholder="name" v-model="name">
+			<input type="text" placeholder="nickname" v-model="nickName">
 			<input type="text" placeholder="password" v-model="password">
 			<button>submit</button>
 		</form>

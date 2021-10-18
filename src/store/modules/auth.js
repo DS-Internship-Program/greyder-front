@@ -36,7 +36,7 @@ const actions = {
         })
     })
   },
-  login({commit}, credentials) => {
+  login({commit}, credentials) {
     return new Promise(() => {
         authApi.login(credentials)
         .then(res => {

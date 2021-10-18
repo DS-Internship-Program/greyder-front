@@ -2,7 +2,7 @@
   <div> 
     <form action="" @submit.prevent="onSubmit">
     <input type="text" v-model="name" placeholder="name">
-    <input type="text" v-model="nickName" placeholder="nickName">
+    <input type="text" v-model="nickName" placeholder="nickname">
     <input type="password" v-model="password" placeholder="password" />
      <button>Войти</button>
     </form>
