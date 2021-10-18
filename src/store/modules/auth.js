@@ -7,17 +7,20 @@ const state = {
 }
 
 const mutations = {
-  registerSuccess(state, data) {
-    state.loggedIn = data
+  registerSuccess(state, payload) {
+    state.loggedIn = payload
   },
-  registerFailed(state, data) {
-    state.error = data
+  registerFailed(state, payload) {
+    state.error = payload
     state.loggedIn = false
   },
-
-  getCurrentSuccess(state, data) {
-    state.loggedIn = data
+  loginSuccess(state, payload){
+    state.loggedIn = payload
   },
+  loginFailed(state, payload){
+    state.error = payload
+    state.loggedIn = false
+  }
 }
 
 const actions = {
@@ -33,6 +36,18 @@ const actions = {
         })
     })
   },
+  login({commit}, credentials) => {
+    return new Promise(() => {
+        authApi.login(credentials)
+        .then(res => {
+            commit('loginSuccess', true)
+            setItem('token', res.data.token)
+        })
+        .catch((result) => {
+            commit("loginFailed", result.response.data.message)  
+        })
+    })
+  }
 }
 
 export default {
