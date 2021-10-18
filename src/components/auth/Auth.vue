@@ -1,7 +1,8 @@
 <template>
   <div> 
     <form action="" @submit.prevent="onSubmit">
-    <input type="text" v-model="email" placeholder="email">
+    <input type="text" v-model="name" placeholder="name">
+    <input type="text" v-model="nickName" placeholder="nickName">
     <input type="password" v-model="password" placeholder="password" />
      <button>Войти</button>
     </form>
@@ -14,14 +15,16 @@ export default {
     props:{},
     data(){
         return {
-            email: '',
+            name: '',
+            nickName: '',
             password: ''
         }
     },
     methods: {
         onSubmit(){
             this.$store.dispatch('login', {
-                email: this.email,
+                name: this.name,
+                nickName: this.nickName,
                 password: this.password
             })
         }

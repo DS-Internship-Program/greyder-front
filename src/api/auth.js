@@ -1,7 +1,8 @@
-import axios from 'axios';
+import axios from './axios'
 
-const login = credentials => {
-    axios.post('/users', credentials)
+
+const login = (credentials) => {
+    return axios.post('http://localhost:3000/auth/login', credentials)
 }
 
 export default {
