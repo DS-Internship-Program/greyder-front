@@ -2,16 +2,21 @@ import authApi from '@/api/auth'
 import { setItem } from '@/helpers/persistenceStorage'
 
 const state = {
-  currentUser: null
+  loggedIn: false,
+  error: null
 }
 
 const mutations = {
-  registerSuccess(state, credentials) {
-    state.currentUser = credentials
+  registerSuccess(state, data) {
+    state.loggedIn = data
+  },
+  registerFailed(state, data) {
+    state.error = data
+    state.loggedIn = false
   },
 
-  getCurrentSuccess(state, credentials) {
-    state.currentUser = credentials
+  getCurrentSuccess(state, data) {
+    state.loggedIn = data
   },
 }
 
@@ -19,22 +24,15 @@ const actions = {
   register({commit}, credentials) {
     return new Promise(() => {
       authApi.register(credentials)
-        .then(res => {
-          commit('registerSuccess', res.data.user)
-          setItem('token', res.data.user.token)
+      .then(res => {
+          commit('registerSuccess', true)
+          setItem('token', res.data.token)
+        })
+        .catch(result => {
+          commit('registerFailed', result.response.data.message)
         })
     })
   },
-
-  getCurrentUser({commit}) {
-    return new Promise(() => {
-      authApi.getCurrentUser()
-        .then(res => {
-          commit('getCurrentSuccess', res.data.user)
-          setItem('token', res.data.user.token)
-        })
-    })
-  }
 }
 
 export default {

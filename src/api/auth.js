@@ -1,7 +1,7 @@
 import axios from './axios'
 
 const register = credentials => {
-  axios.post('/users', credentials)
+  return axios.post('/auth/registration', credentials)
 }
 
 const getCurrentUser = () => {
