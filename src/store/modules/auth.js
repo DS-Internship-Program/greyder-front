@@ -26,7 +26,7 @@ export default {
                     commit('loginSuccess', true)
                     console.log(res , 'res')
                     // setItem('token', res.data.token)
-                    console.log(res.data.token)
+                    // console.log(res.data.token)
                 })
                 .catch((result) => {
                     console.log(result.response.data.message, 'error')
