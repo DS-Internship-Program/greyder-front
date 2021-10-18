@@ -1,17 +1,17 @@
 <template>
-  <div> 
-    <form action="" @submit.prevent="onSubmit">
-    <input type="text" v-model="name" placeholder="name">
-    <input type="text" v-model="nickName" placeholder="nickname">
-    <input type="password" v-model="password" placeholder="password" />
-     <button>Войти</button>
-    </form>
-  </div>
+    <div> 
+		<form action="" @submit.prevent="onSubmit">
+			<input type="text" placeholder="name" v-model="name">
+			<input type="text" placeholder="nickname" v-model="nickName">
+			<input type="password" placeholder="password" v-model="password">
+			<button>submit</button>
+		</form>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'Login',
+    name: 'login',
     props:{},
     data(){
         return {

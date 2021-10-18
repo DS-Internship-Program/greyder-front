@@ -17,7 +17,7 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: () => import('../components/auth/Auth.vue')
   }
 ]

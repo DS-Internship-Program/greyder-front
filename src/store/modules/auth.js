@@ -44,7 +44,7 @@ const actions = {
             setItem('token', res.data.token)
         })
         .catch((result) => {
-            commit("loginFailed", result.response.data.message)  
+            commit('loginFailed', result.response.data.message)  
         })
     })
   }
