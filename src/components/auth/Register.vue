@@ -44,7 +44,7 @@
                     required
                 ></b-form-input>
             </b-form-group>
-            <p @click="toAuth" class="errors" v-if="error">{{error}}</p>
+            <p class="errors" v-if="error">{{error}}</p>
             <p class="paths">
                 <router-link :to="{name: 'login'}">Sign In</router-link>
             </p>
