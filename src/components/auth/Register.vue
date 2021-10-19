@@ -78,4 +78,26 @@ import {mapState} from 'vuex'
             }
         }
     }
+</template>
+
+<script>
+export default {
+	name: 'register',
+	data() {
+		return {
+			name: '',
+			nickName: '',
+			password: ''
+		}
+	},
+	methods: {
+		onSubmit() {
+			this.$store.dispatch('register', {
+				name: this.name,
+				nickName: this.nickName,
+				password: this.password
+			})
+		}
+	}
+}
 </script>
