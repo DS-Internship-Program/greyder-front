@@ -1,22 +1,30 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import App from '@/App'
+
+Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/auth',
-        name: 'Auth',
-        component: () => import('../components/auth/Auth.vue')
-    },
-    {
-        path: '/register',
-        name: 'register',
-        component: ()=> import('../components/auth/Register.vue')
-    }
+  {
+    path: '/',
+    name: 'app',
+    component: App
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: ()=> import('../components/auth/Register.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../components/auth/Auth.vue')
+  }
 ];
 
 const router = new VueRouter({
-    routes
+  routes
 });
 
 export default router;
