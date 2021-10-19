@@ -6,6 +6,9 @@ const state = {
   error: null
 }
 
+const getters = {
+}
+
 const mutations = {
   registerSuccess(state, payload) {
     state.loggedIn = payload
@@ -55,5 +58,6 @@ const actions = {
 export default {
   state,
   mutations,
-  actions
+  actions,
+  getters
 }

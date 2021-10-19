@@ -13,6 +13,10 @@ export default {
 
 <style>
 .errors {
-    color: red
+    color: red;
+	font-size: 15px;
+}
+.paths {
+	text-decoration: underline;
 }
 </style>

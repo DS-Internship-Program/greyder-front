@@ -4,15 +4,18 @@
 		style="height: 100vh"
 	>
 		<b-form class="bg-light p-5 rounded" @submit.prevent="onSubmit">
+			<h5 class="d-flex justify-content-center">Sign In</h5>
 			<b-form-group 
                 id="input-group-1"
                 label="Name:"
                 label-for="input-1"
             >
 				<b-form-input
+                    id="input-1"
 					v-model="name"
 					type="text"
 					placeholder="Enter name"
+                    autocomplete="off"
 					required
 				>
 				</b-form-input>
@@ -48,10 +51,12 @@
                 </b-form-input>
 			</b-form-group>
             <p class="errors" v-if="error">{{error}}</p>
-            <p>
+            <p class="paths">
                 <router-link :to="{name: 'register'}">Register</router-link>
             </p>
+			<div class="d-flex justify-content-center align-items-center">
 			<b-button type="submit" variant="primary">Sign In</b-button>
+            </div>
 		</b-form>
 	</BContainer>
 </template>
@@ -64,7 +69,7 @@ export default {
 		return {
 			name: '',
 			nickName: '',
-			password: '',
+			password: ''
 		}
 	},
     computed: {
@@ -81,7 +86,7 @@ export default {
 			}).then(() => {
                 this.$router.push({name: 'app'})
             })
-		},
+		}
 	}
 }
 </script>
