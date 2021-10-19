@@ -1,6 +1,10 @@
 <template>
-    <BContainer class="d-flex justify-content-center align-items-center" style="height: 100vh">
-        <b-form @submit.prevent="onSubmit" class="bg-light p-5 rounded">
+    <BContainer 
+		class="d-flex justify-content-center align-items-center" 
+		style="height: 100vh; width: 100vh"
+	>
+        <b-form class="bg-light p-5 rounded" @submit.prevent="onSubmit">
+			<h5 class="d-flex justify-content-center">Register</h5>
             <b-form-group
                 id="input-group-1"
                 label="Name:"
@@ -10,7 +14,7 @@
                     id="input-1"
                     v-model="name"
                     type="text"
-                    placeholder="Enter username"
+                    placeholder="Enter name"
                     autocomplete="off"
                     required
                 >
@@ -40,11 +44,13 @@
                     required
                 ></b-form-input>
             </b-form-group>
-            <p class="errors" v-if="error">{{error}}</p>
-            <p>
+            <p @click="toAuth" class="errors" v-if="error">{{error}}</p>
+            <p class="paths">
                 <router-link :to="{name: 'login'}">Sign In</router-link>
             </p>
+			<div class="d-flex justify-content-center align-items-center">
             <b-button type="submit" variant="primary">Register</b-button>
+			</div>
         </b-form>
     </BContainer>
 </template>
@@ -70,34 +76,12 @@ import {mapState} from 'vuex'
                 this.$store.dispatch('register', {
                     name: this.name,
                     nickName: this.nickName,
-                    password: this.password
+                    password: this.password,
                 })
                 .then(() => {
                     this.$router.push({name: 'app'})
                 })
             }
-        }
+        },
     }
-</template>
-
-<script>
-export default {
-	name: 'register',
-	data() {
-		return {
-			name: '',
-			nickName: '',
-			password: ''
-		}
-	},
-	methods: {
-		onSubmit() {
-			this.$store.dispatch('register', {
-				name: this.name,
-				nickName: this.nickName,
-				password: this.password
-			})
-		}
-	}
-}
 </script>
