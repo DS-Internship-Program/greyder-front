@@ -25,11 +25,12 @@ const mutations = {
 
 const actions = {
   register({commit}, credentials) {
-    return new Promise(() => {
+    return new Promise(resolve => {
       authApi.register(credentials)
       .then(res => {
           commit('registerSuccess', true)
           setItem('token', res.data.token)
+          resolve()
         })
         .catch(result => {
           commit('registerFailed', result.response.data.message)
@@ -37,11 +38,12 @@ const actions = {
     })
   },
   login({commit}, credentials) {
-    return new Promise(() => {
+    return new Promise(resolve => {
         authApi.login(credentials)
         .then(res => {
             commit('loginSuccess', true)
             setItem('token', res.data.token)
+            resolve()
         })
         .catch((result) => {
             commit('loginFailed', result.response.data.message)  

@@ -12,4 +12,7 @@ export default {
 </script>
 
 <style>
+.errors {
+    color: red
+}
 </style>
