@@ -17,6 +17,7 @@
         v-model="tableName"
         ref="tableName"
       />
+      <p class="warning" ref="messageError">{{error}}</p>
 			<template slot="modal-footer">
 				<b-button 
           variant="success"
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import {mapMutations, mapState} from 'vuex'
 export default {
 	name: 'CreateTable',
   data() {
@@ -44,31 +46,30 @@ export default {
       tableName: ''
     }
   },
+  computed: {
+    ...mapState({
+      error: state => state.tables.error,
+    }),
+    ...mapMutations({
+      createTableSuccess: 'createTableSuccess' 
+    })
+  },
 	methods: {
 		showModal() {
 			this.$refs['modalFile'].show()
+      this.tableName = ''
+      this.createTableSuccess
 		},
     createTable(variant = null) {
       this.$store.dispatch('createTable', this.tableName)
       .then(res => {
-        if(res.data === 'Таблица с таким именем уже есть в базе.') {
-          console.log(this.$refs.tableName.classList.add('warning'));
-          this.$bvToast.toast(res.data, {
-            variant: 'danger',
-            title: 'Warning',
-            solid: true
-          })
-        }
-        else {
-          console.log(res);
           this.$refs['modalFile'].hide()
           this.tableName = ''
           this.$bvToast.toast(res, {
-              title: `${variant || 'default'}`,
-              variant: variant,
-              solid: true
-            })
-        }
+            title: `${variant || 'default'}`,
+            variant: variant,
+            solid: true
+          })
       })
     }
 	},
