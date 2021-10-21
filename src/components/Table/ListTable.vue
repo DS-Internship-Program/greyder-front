@@ -40,6 +40,9 @@ export default {
 ul, li {
   list-style-type: none;
 }
+.list-table {
+  width: 15%;
+}
 .list-table__list {
   display: flex;
   justify-content: space-between;
