@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getItem } from '@/helpers/persistenceStorage'
+import {getItem} from '@/helpers/persistenceStorage'
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
