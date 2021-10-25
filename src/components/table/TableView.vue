@@ -80,7 +80,7 @@
 <script>
 import {  mapGetters, mapActions } from 'vuex'
 export default {
-    name: 'table-view',
+    name: 'tableView',
     data(){
         return {
           columnsData: [],

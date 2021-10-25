@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import listTable from '@/components/Table/ListTable'
-import createTable from '@/components/Table/CreateTable'
-import TableView from '../components/table/TableView.vue'
+import listTable from '../components/table/ListTable.vue'
+import createTable from '../components/table/CreateTable.vue'
+import tableView from '../components/table/TableView.vue'
 
 export default {
   name: 'Home',
