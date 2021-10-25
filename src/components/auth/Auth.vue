@@ -84,7 +84,7 @@ export default {
 				nickName: this.nickName,
 				password: this.password,
 			}).then(() => {
-                this.$router.push({name: 'app'})
+                this.$router.push({name: 'home'})
             })
 		}
 	}
