@@ -1,7 +1,7 @@
-import Vue from 'vue'
+  import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
@@ -18,6 +18,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('../components/auth/Auth.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import('../components/table/Table.vue')
   }
 ];
 
